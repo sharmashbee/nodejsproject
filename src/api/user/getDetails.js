@@ -1,4 +1,4 @@
-const user = require('../../models/user');
+const user = require('../../data/user');
 const express = require("express");
 const router = express.Router();
 const verifyToken = require('./verifyToken');

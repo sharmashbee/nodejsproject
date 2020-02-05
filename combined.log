@@ -29,3 +29,11 @@
 {"level":"info","message":"mongoose connected to mongodb://192.168.1.96/template","metadata":{}}
 {"level":"info","message":"server listening at port : 8080","metadata":{}}
 {"level":"info","message":"mongoose connected to mongodb://192.168.1.96/template","metadata":{}}
+{"level":"info","message":"server listening at port : 8080","metadata":{}}
+{"level":"info","message":"mongoose connected to mongodb://localhost/template","metadata":{}}
+{"level":"info","message":"server listening at port : 8080","metadata":{}}
+{"level":"info","message":"mongoose connected to mongodb://localhost/template","metadata":{}}
+{"level":"info","message":"server listening at port : 8080","metadata":{}}
+{"level":"info","message":"mongoose connected to mongodb://localhost/template","metadata":{}}
+{"level":"info","message":"server listening at port : 8080","metadata":{}}
+{"level":"info","message":"mongoose connected to mongodb://localhost/template","metadata":{}}

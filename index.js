@@ -1,6 +1,5 @@
 const express = require("express");
-const bodyParser= require("body-parser");
-const app = express();
+const bodyParser= require("body-parser");const app = express();
 const router = express.Router();
 const mongooose = require('./src/data/mongo.js');
 const logger  = require('./src/lib/logger.js');
@@ -9,7 +8,6 @@ const login = require('./src/api/user/login.js');
 const getDetails = require('./src/api/user/getDetails.js');
 const PORT = process.env.PORT ;
 mongooose.connection;
-
 app.use(bodyParser.urlencoded({
     extended: true
 }));
