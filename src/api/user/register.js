@@ -5,8 +5,8 @@ const user = require('../../data/user');
 const express = require("express");
 const router = express.Router(); 
 
-router.post('/register', (req, res) => {
-
+router.post('/register', (req, res, next) => {
+  try{
     var hashedPassword = bcrypt.hashSync(req.body.password, 8);
   
     user.create({
@@ -23,5 +23,12 @@ router.post('/register', (req, res) => {
       });
       res.status(200).send({ auth: true, token: token });
     });
+
+  }
+  catch(err){
+    next(err);
+  }
+    
+    
   });
 module.exports = router;

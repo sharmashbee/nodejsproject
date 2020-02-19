@@ -2,7 +2,8 @@ var jwt = require('jsonwebtoken');
 var config = require('../../lib/config');
 
 function verifyToken(req, res, next) {
-  var token = req.headers['x-access-token'];
+  try{
+    var token = req.headers['x-access-token'];
   if (!token)
     return res.status(403).send({ auth: false, message: 'No token provided.' });
     
@@ -14,6 +15,12 @@ function verifyToken(req, res, next) {
     req.userId = decoded.id;
     next();
   });
+
+  }
+  catch(err){
+    next(err);
+  }
+  
 }
 
 module.exports = verifyToken;

@@ -4,7 +4,8 @@ var config = require('../../lib/config');
 const user = require('../../data/user');
 const express = require("express");
 const router = express.Router();
-router.post('/login', (req, res) => {
+router.post('/login', (req, res, next) => {
+  try{
     user.findOne({ email: req.body.email }, (err, user) => {
       if (err) return res.status(500).send('Error on the server.');
       if (!user) return res.status(404).send('No user found.');
@@ -19,6 +20,13 @@ router.post('/login', (req, res) => {
   
       res.status(200).send({ auth: true, token: token });
     });
+
+  }
+  catch(err){
+    next(err);
+  }
   
+  
+
   });
   module.exports = router;

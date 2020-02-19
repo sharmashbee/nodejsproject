@@ -2,14 +2,35 @@ const user = require('../../data/user');
 const express = require("express");
 const router = express.Router();
 const verifyToken = require('./verifyToken');
-router.get('/getDetails', verifyToken, function(req, res, next) {
+router.get('/getDetails',verifyToken, (req, res, next) => {
+  try{
+    user.find({},(err, user) => {
+      res.status(200).json({
+        data: user
+       });
+  
+    })
 
-   user.findById(req.userId, { password: 0 }, function (err, user) {
-     if (err) return res.status(500).send("There was a problem finding the user.");
-     if (!user) return res.status(404).send("No user found.");
-     
-     res.status(200).send(user);
-   });
-   
- });
+  }
+  catch(err){
+    next(err);
+  }
+ 
+})
+router.get('/getDetails/:userId',(req, res, next) => {
+  try{
+    const userId = req.params.userId;
+    user.findById({_id: userId}, (err,user) => {
+      if (err) throw err;
+      res.status(200).json({
+        data: user
+      })
+    })
+
+  }
+  catch(err){
+    next(err);
+  }
+ 
+})
   module.exports = router;  
