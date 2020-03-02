@@ -1,7 +1,7 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-var User = new Schema({
+var admin = new Schema({
     name: {
         type: String,
         required : [ true, 'name is required'],
@@ -21,9 +21,12 @@ var User = new Schema({
     password: {
         type: String,
         required : [ true, 'password is required']
+    },
+    Token: {
+        type: String
     }
 }, {
     timestamps: true
 });
 
-module.exports = mongoose.model('User', User);
+module.exports = mongoose.model('admin', admin);
