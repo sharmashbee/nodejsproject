@@ -7,11 +7,10 @@ router.post('/addOs', (req,res,next)=>{
         os.create({osname},
         function(err , os){
           if(err) res.status(500).send("There was problem in registering operating system");
+          
       
-          res.status(200).json({
-            data : os,
-            message : "os Details added"
-          });
+          res.status(200).send({ message:"os details added" });
+         
 
         })
         } catch (err){

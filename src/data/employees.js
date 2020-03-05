@@ -13,11 +13,13 @@ var employees = new Schema({
     },
     email: {
         type: String,
-        required : true
+        required : true,
+        unique: true
     },
     phone: {
       type: String,
-      required : true
+      required : true,
+      unique: true
 
     },
     doj: {
@@ -27,9 +29,10 @@ var employees = new Schema({
     dor: {
         type: String,
         required: true
+    },
+    Token: {
+        type: String
     }
-}, {
-    timestamps: true
 });
 
 module.exports = mongoose.model('employees', employees);

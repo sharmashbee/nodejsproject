@@ -6,10 +6,11 @@ var os = new Schema({
     osname: {
         type: String,
         required : true
+    },
+    Token: {
+        type: String
     }
 
-}, {
-    timestamps: true
 });
 
 module.exports = mongoose.model('os', os);

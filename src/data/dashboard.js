@@ -4,11 +4,13 @@ let Schema = mongoose.Schema;
 var dashboard = new Schema({
     emp: {
         type: Schema.Types.ObjectId,
-        ref: "employees"
+        ref: "employees",
+        unique: true
     },
     sys: {
         type: Schema.Types.ObjectId,
-        ref: "system"
+        ref: "system",
+        unique: true
     },
     os: {
         type: Schema.Types.ObjectId,
@@ -23,8 +25,10 @@ var dashboard = new Schema({
         required : [ true]
     },
     rtd: {
-        type: Date,
-        required : [ true]
+        type: Date
+    },
+    Token: {
+        type: String
     }
 
 });

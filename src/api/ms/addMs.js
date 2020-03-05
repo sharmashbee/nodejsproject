@@ -7,11 +7,10 @@ router.post('/addMs', (req,res,next)=>{
     msOffice.create({msname},
     function(err , msOffice){
      if(err) res.status(500).send("There was problem in registering msoffice");
+   
+  
+      res.status(200).send({ message:"msoffice details added" });
       
-        res.status(200).json({
-            data : msOffice,
-            message : "MSOffice Details added"
-        });
 
     })
     } catch (err){

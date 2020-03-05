@@ -10,6 +10,7 @@ var admin = new Schema({
     phone: {
       type: Number,
       required : [ true, 'phone is required'],
+      unique : true
 
   },
     email: {
@@ -25,8 +26,6 @@ var admin = new Schema({
     Token: {
         type: String
     }
-}, {
-    timestamps: true
 });
 
 module.exports = mongoose.model('admin', admin);

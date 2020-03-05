@@ -1,7 +1,8 @@
 var express = require("express")
 const os =require("../../data/os")
 const router = express.Router()
-router.get('/getOs',(req , res , next)=>{
+const verifyToken = require('../../lib/verifyToken');
+router.get('/getOs',verifyToken,(req , res , next)=>{
     try{
       os.find({},function( err , os ){
         if(err) res.status(500).send("There was problem in finding os");

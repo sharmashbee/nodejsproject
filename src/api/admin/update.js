@@ -2,17 +2,19 @@ const admin = require('../../data/admin');
 const express = require("express");
 const router = express.Router();
 
-router.put('/update/:adminId',  (req, res) => {
-    const update =req.body
-    const adminId = req.params.adminId;
+router.put('/update/:adminId', async(req, res) => {
+    try{
+        const update =req.body;
+        const adminId = req.params.adminId;
+       // console.log(adminId);
+        
+       // if (!adminId) res.status(500).send({msg:'no id provided'});
 
-    
-    admin.findById({_id: adminId}, (err, admin) => {
-        if (err) return res.status(500).send("There was a problem finding the user.");
-        if (admin === null) {
-            res.status(404).send("No user found.");
-        }else{
-            admin.updateOne({$set:update}, (err, admin)=>{
+
+            const admin11 = await admin.findById({_id: adminId});
+            if (!admin11)  res.status(500).send({msg:'admin not found with this Id'});
+            else{
+              admin.updateOne({$set:update}, (err, admin)=>{
                 if(!err){
                     res.status(200).json({
                         data:admin,
@@ -22,7 +24,10 @@ router.put('/update/:adminId',  (req, res) => {
             });
         }
         
-      
-  });
+    }
+
+    catch(err){
+        next(err);
+    }
 });
-   module.exports = router;
+module.exports = router;

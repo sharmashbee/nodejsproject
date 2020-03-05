@@ -2,18 +2,6 @@ let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
 var system = new Schema({
-    emp: {
-        type: Schema.Types.ObjectId,
-        ref: "employees"
-    },
-    os: {
-        type: Schema.Types.ObjectId,
-        ref: "os"
-    },
-    ms: {
-        type: Schema.Types.ObjectId,
-        ref: "msOffice"
-    },
 
     sysid: {
         type: String,
@@ -49,9 +37,10 @@ var system = new Schema({
     rtd: {
         type: Date,
         required : [ true]
+    },
+    Token: {
+        type: String
     }
-}, {
-    timestamps: true
 });
 
 module.exports = mongoose.model('system', system);

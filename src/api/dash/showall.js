@@ -1,11 +1,13 @@
 var express = require("express")
 const dashboard = require('../../data/dashboard');
+const verifyToken = require('../../lib/verifyToken')
 const router = express.Router(); 
-router.get('/showall',( req , res , next )=>{
+router.get('/showall',verifyToken,( req , res , next )=>{
     try{
        
     
         dashboard.find().populate('sys').populate('emp').populate('os').populate('ms').exec().then(doc=>{
+        //    console.log(doc)
             var arr = [];
             doc.forEach(item => {
                 var date1 = item.rd;
@@ -30,12 +32,15 @@ router.get('/showall',( req , res , next )=>{
                 }
                 arr.push(obj);
             }) 
-            res.send(arr);
+            res.json(arr);
             
         })
+    
     }
-    catch(err){
-        next(err)
+    catch(err) {
+        next(err);
+    
     }
+
 });
 module.exports = router;

@@ -6,10 +6,11 @@ var msOffice = new Schema({
     msname: {
         type: String,
         required : true
+    },
+    Token: {
+        type: String
     }
 
-}, {
-    timestamps: true
 });
 
 module.exports = mongoose.model('msOffice', msOffice);

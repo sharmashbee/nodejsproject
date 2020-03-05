@@ -1,7 +1,8 @@
 var express = require("express")
 const system = require('../../data/system');
+const verifyToken = require('../../lib/verifyToken');
 const router = express.Router();
-router.get('/showDetails1',( req , res , next )=>{
+router.get('/showDetails1',verifyToken, ( req , res , next )=>{
      try{
          
          system.find({},function( err , system ){

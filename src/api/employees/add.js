@@ -8,11 +8,10 @@ router.post('/add', (req, res) => {
       function (err, employees) {
         console.log(err)
         if (err) return res.status(500).send("There was a problem in adding the employee")
+
+  
+      res.status(200).send({ message:"employee has been added" });
       
-        res.status(200).json({
-            data: employees,
-            message:"employee has been added"
-        });
       });
   
 
