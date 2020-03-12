@@ -42,7 +42,7 @@ app.use(express.static(__dirname +'/public'));
 router.use('/api/admin', register);
 router.use('/api/admin', login);
 router.use('/api/admin', getDetails);
-router.use('/api/admin', update);
+// router.use('/api/admin', update);
 router.use('/api/admin',delete1);
 router.use('/api/employees',add);
 router.use('/api/employees',showDetails);

@@ -6,7 +6,6 @@ router.put('/edit1/:systemId',(req, res, next)=>{
     const edit = req.body
     const systemId = req.params.systemId
     system.findById({_id : systemId},function (err, system) {
-        console.log(err);
         if (err) return res.status(500).send("There was a problem finding the laptop/system.");
         if (system === null) {
             res.status(404).send("No laptop/system found.");

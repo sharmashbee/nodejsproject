@@ -7,9 +7,8 @@ const SECRET = process.env.SECRET;
 router.post('/login',async (req, res, next) => {
   try {
    const { email,password } = req.body;
-   console.log(req.body)
    const admin11 = await admin.findOne({ email });
-   //console.log(admin11)
+   
    if (!admin11) res.send({msg:'No admin found.'});
    else{
     const validPassword = await bcrypt.compare(password, admin11.password);

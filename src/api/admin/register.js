@@ -11,15 +11,21 @@ router.post('/register', async(req, res) => {
     const {name,phone,email} = req.body;
     
     var hashedPassword = await bcrypt.hash(req.body.password, 8);
-    const admin11 = await admin.findOne({ email,phone });
-    if (admin11) res.send({msg:"admin already exist "})
+    const admin11 = await admin.findOne({ email});
+    const admin12 = await admin.findOne({ phone});
+    if (admin11) res.send({msg:"email already exist "})
     else{
-      const admin12 = await admin.create({name, phone, email, password:hashedPassword});
+      if(admin12) res.send({msg:"phone already exists"})
+      else{
 
-      var Token = jwt.sign({ id: admin12._id }, SECRET, {
-        expiresIn: 86400 
-      });
-      res.status(200).send({  token: Token, message:"admin registered successfully" });
+        const admin13 = await admin.create({name, phone, email, password:hashedPassword});
+
+        var Token = jwt.sign({ id: admin13._id }, SECRET, {
+          expiresIn: 86400 
+        });
+        res.status(200).send({  token: Token, message:"admin registered successfully" });
+      }
+     
 
     }
 
